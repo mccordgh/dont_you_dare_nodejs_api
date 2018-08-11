@@ -47,6 +47,7 @@ module.exports = function(app, db) {
         const item = {
             description: req.body.description,
             title: req.body.title,
+            completed: req.body.completed,
         };
 
         db.collection('items').insert(item, (err, result) => {
@@ -56,7 +57,6 @@ module.exports = function(app, db) {
                 return;
             }
 
-            console.log(result.ops);
             res.send(result.ops[0]);
         })
     });
@@ -65,8 +65,9 @@ module.exports = function(app, db) {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
         const item = {
-            text: req.body.body,
+            description: req.body.description,
             title: req.body.title,
+            completed: req.body.completed,
         };
 
         db.collection('items').update(details, item, (err, result) => {
