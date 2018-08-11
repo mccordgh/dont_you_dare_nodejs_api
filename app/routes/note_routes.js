@@ -16,6 +16,19 @@ module.exports = function(app, db) {
         })
     })
 
+    app.get('/notes', (req, res) => {
+        db.collection('notes').find().toArray((err, items) => {
+            console.log({items})
+            if (err) {
+                res.send({ 'error': 'An error occured' });
+
+                return;
+            }
+
+            res.send(items)
+        })
+    })
+
     app.get('/notes/:id', (req, res) => {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
