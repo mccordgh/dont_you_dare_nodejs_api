@@ -45,7 +45,6 @@ module.exports = function(app, db) {
 
     app.post('/items', (req, res) => {
         const item = {
-            description: req.body.description,
             title: req.body.title,
             completed: req.body.completed,
         };
@@ -65,7 +64,6 @@ module.exports = function(app, db) {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
         const item = {
-            description: req.body.description,
             title: req.body.title,
             completed: req.body.completed,
         };
