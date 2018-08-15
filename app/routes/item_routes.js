@@ -46,7 +46,7 @@ module.exports = function(app, db) {
     app.post('/items', (req, res) => {
         const item = {
             title: req.body.title,
-            completed: req.body.completed,
+            completedCount: req.body.completedCount,
         };
 
         db.collection('items').insert(item, (err, result) => {
@@ -65,7 +65,7 @@ module.exports = function(app, db) {
         const details = { '_id': new ObjectID(id) };
         const item = {
             title: req.body.title,
-            completed: req.body.completed,
+            completedCount: req.body.completedCount,
         };
 
         db.collection('items').update(details, item, (err, result) => {
